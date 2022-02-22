@@ -66,11 +66,6 @@ def univariateLinearRegression(feature, x_train, y_train, x_test, y_test, learni
     plt.show()
     plt.close()
 
-for i, feature in enumerate(features[:-1]):
-    x_train = X_train[:, i]
-    x_test = X_test[:, i]
-    univariateLinearRegression(feature, x_train, y_train, x_test, y_test, 0.000000001)
-
 # B) Multi-variate linear regression
 # Multi-variate: f(x) = (m . x)
 def multi_loss_function(x, y, a, n):
@@ -92,7 +87,6 @@ def multivariateLinearRegression(x_train, y_train, x_test, y_test):
 
     print("When alpha = 0.0000001:")
     print("Stop after %s iteration" %(iteration))
-    # print(a)
     for i in range(0,9):
         print(f"m{i} : {a[i]}")
 
@@ -135,8 +129,6 @@ def multiVariatePolynomialRegression(x_train, y_train, x_test, y_test, learning_
         a = a - 0.0000000000000000001 * (2/900 * np.dot(y_pred.reshape(1, -1) - y_train.reshape(1, -1), newX_train).reshape(-1,))
         prev_mse = mse
         mse = poly_loss_function(newX_train, y_train, a, 900)
-        # print("prev_mse: %s" %(prev_mse))
-        # print("mse: %s" %(mse))
 
     print("When alpha = 0.0000000000000000001:")
     print("Stop after %s iteration" %(iteration))
@@ -145,13 +137,13 @@ def multiVariatePolynomialRegression(x_train, y_train, x_test, y_test, learning_
     print('Variance explained of your models on the training dataset: %s' %(1-poly_loss_function(newX_train, y_train, a, 900)/statistics.variance(y_train)))
 
 # run Question A
-for i, feature in enumerate(features[:-1]):
-    x_train = X_train[:, i]
-    x_test = X_test[:, i]
-    univariateLinearRegression(feature, x_train, y_train, x_test, y_test, 0.000000001)
+# for i, feature in enumerate(features[:-1]):
+#     x_train = X_train[:, i]
+#     x_test = X_test[:, i]
+#     univariateLinearRegression(feature, x_train, y_train, x_test, y_test, 0.000000001)
 
 # run Question B
-multivariateLinearsRegression(X_train, y_train, X_test, y_test)
+multivariateLinearRegression(X_train, y_train, X_test, y_test)
 
 # run Question C
 multiVariatePolynomialRegression(X_train, y_train, X_test, y_test, 0.00001)

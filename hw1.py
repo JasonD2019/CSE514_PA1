@@ -137,10 +137,10 @@ def multiVariatePolynomialRegression(x_train, y_train, x_test, y_test, learning_
     print('Variance explained of your models on the training dataset: %s' %(1-poly_loss_function(newX_train, y_train, a, 900)/statistics.variance(y_train)))
 
 # run Question A
-# for i, feature in enumerate(features[:-1]):
-#     x_train = X_train[:, i]
-#     x_test = X_test[:, i]
-#     univariateLinearRegression(feature, x_train, y_train, x_test, y_test, 0.000000001)
+for i, feature in enumerate(features[:-1]):
+    x_train = X_train[:, i]
+    x_test = X_test[:, i]
+    univariateLinearRegression(feature, x_train, y_train, x_test, y_test, 0.000000001)
 
 # run Question B
 multivariateLinearRegression(X_train, y_train, X_test, y_test)
